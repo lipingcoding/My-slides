@@ -1,0 +1,124 @@
+\documentclass[10pt]{beamer}
+
+\usepackage[utf8]{inputenc}
+\usepackage{xeCJK}
+\usepackage{graphicx}
+\usepackage {mathtools}
+\usepackage{utopia} %font utopia imported
+\usetheme{CambridgeUS}
+\usecolortheme{dolphin}
+\usepackage{mathtools}
+\newcommand{\defeq}{\vcentcolon=}
+
+% set colors
+\definecolor{myNewColorA}{RGB}{126,12,110}
+\definecolor{myNewColorB}{RGB}{165,85,154}
+\definecolor{myNewColorC}{RGB}{203,158,197}
+\setbeamercolor*{palette primary}{bg=myNewColorC}
+\setbeamercolor*{palette secondary}{bg=myNewColorB, fg = white}
+\setbeamercolor*{palette tertiary}{bg=myNewColorA, fg = white}
+\setbeamercolor*{titlelike}{fg=myNewColorA}
+\setbeamercolor*{title}{bg=myNewColorA, fg = white}
+\setbeamercolor*{item}{fg=myNewColorA}
+\setbeamercolor*{caption name}{fg=myNewColorA}
+\usefonttheme{professionalfonts}
+\usepackage{natbib}
+\usepackage{hyperref}
+%------------------------------------------------------------
+\titlegraphic{
+\includegraphics[height=1.cm]{ia_icon.pdf}
+\hspace{0.5cm}
+\includegraphics[height=1.cm]{cripac_icon.pdf}
+}
+
+\setbeamerfont{title}{size=\large}
+\setbeamerfont{subtitle}{size=\small}
+\setbeamerfont{author}{size=\small}
+\setbeamerfont{date}{size=\small}
+\setbeamerfont{institute}{size=\small}
+\title[CRIPAC]{Stable Learning}
+\subtitle{Foundations and Applations}
+\author[Liping Wang]{Liping Wang}
+
+\institute[wangliping2019@ia.ac.cn]{UCAS, CRIPAC}
+\date[Institute of Autation 2022.4]
+{Madrid 2021.4}
+
+%------------------------------------------------------------
+%This block of commands puts the table of contents at the 
+%beginning of each section and highlights the current section:
+%\AtBeginSection[]
+%{
+%  \begin{frame}
+%    \frametitle{Contents}
+%    \tableofcontents[currentsection]
+%  \end{frame}
+%}
+\AtBeginSection[]{
+  \begin{frame}
+  \vfill
+  \centering
+  \begin{beamercolorbox}[sep=8pt,center,shadow=true,rounded=true]{title}
+    \usebeamerfont{title}\insertsectionhead\par%
+  \end{beamercolorbox}
+  \vfill
+  \end{frame}
+}
+%------------------------------------------------------------
+
+\begin{document}
+
+%The next statement creates the title page.
+\frame{\titlepage}
+\begin{frame}
+\frametitle{Contents}
+\tableofcontents
+\end{frame}
+%------------------------------------------------------------
+%\section{Introduction}
+%    \begin{frame}{Introduction}
+%    \end{frame}
+\section{Background Knowledge}
+
+\begin{frame}{Hilbert Space \& Kernel}
+\begin{definition}[Hilbert Space]
+	A Hilbert space is a real or complex \textbf{inner product space} that is also a \textbf{complete} metric space with respect to the distance function induced by the inner product.
+\end{definition}
+
+Motivation: to generalize methods of linear algebra and calculus from the finite-dimensional Euclidean spaces to infinite-dimensional spaces.
+
+\begin{definition}[Kernel]
+Let $\chi$ be a non-empty set. 
+A function $k: \chi \times \chi\rightarrow \mathbb{R}$ is called a kernel if there exists an $\mathbb R$-Hilbert space and a map $\phi:\chi \rightarrow \mathcal H$ such that $\forall x_1, x_2\in chi$, 
+\begin{equation}
+	k(x_1, x_2) \defeq \langle\phi(x_1),\phi(x_2)\rangle_{\mathcal H}
+\end{equation}   
+\end{definition}
+Motivation: to map features to an infinite-dimensional space.
+
+\end{frame}
+
+\begin{frame}{RKHS(Reproducing Kernel Hilbert Spaces)}
+
+
+
+
+\end{frame}
+
+
+
+
+\section{Conclusion}
+    \begin{frame}{Conclusion}
+    \end{frame}
+
+
+
+\section*{Acknowledgement}  
+\begin{frame}
+\textcolor{myNewColorA}{\Huge{\centerline{Thank you!}}}
+\end{frame}
+
+\end{document}
+
+
