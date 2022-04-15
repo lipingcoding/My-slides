@@ -1,0 +1,135 @@
+
+
+\begin{frame}{Hilbert Space \& Kernel}
+\begin{definition}[Hilbert Space]
+	A Hilbert space is a real or complex \textbf{inner product space} that is also a \textbf{complete} metric space with respect to the distance function induced by the inner product (i.e. complete inner space).
+\end{definition}
+
+Motivation: to generalize methods of linear algebra and calculus from the finite-dimensional Euclidean spaces to infinite-dimensional spaces.
+
+\begin{definition}[Kernel]
+Let $\mathcal X$ be a non-empty set. 
+A function $k: \mathcal X \times \mathcal X\rightarrow \mathbb{R}$ is called a kernel if there exists an $\mathbb R$-Hilbert space and a map $\phi:\mathcal X \rightarrow \mathcal H$ such that $\forall x_1, x_2\in \mathcal X$, 
+\begin{equation}
+	k(x_1, x_2) \defeq \langle\phi(x_1),\phi(x_2)\rangle_{\mathcal H},
+\end{equation}   
+\end{definition}
+i.e. functions that can be written as an inner product in a feature space.
+%Motivation: to map features to an infinite-dimensional space.
+
+\end{frame}
+
+
+
+\begin{frame}{RKHS(Reproducing Kernel Hilbert Spaces)}
+
+\begin{definition}[RKHS]
+Let $\mathcal{H}$ be a Hilbert space of of $\mathbb R$-valued functions defined on non-empty set $\mathcal X$.
+A function $k: \mathcal X \times \mathcal X \rightarrow \mathbb R $ is called a reproducing kernel of $\mathcal{H}$, and $\mathcal{H}$ is a reproducing kernel Hilbert space, if $k$ satisfies 
+\begin{itemize}
+	\item $\forall x\in \mathcal X, k(\cdot,x)\in \mathcal H$
+	\item $\forall x\in \mathcal X, \langle f, k(\cdot, x)\rangle_{\mathcal H} = f(x)$ (the reproducing property).
+\end{itemize}
+	
+\end{definition}
+Notions:
+\begin{itemize}
+	\item RKHS is a specific kind of Hilbert space.
+	\item In particular, $\forall x, y \in \mathcal X, k(x, y)=\langle k(\cdot,x), k(\cdot,y)\rangle$
+\end{itemize}
+
+Further:
+We can prove the uniqueness of reproducing kernel.
+
+\end{frame}
+
+\begin{frame}{Reproducing Kernel}
+Actually, the following three concepts are the equivalent:
+\begin{itemize}
+	\item Kernel
+	\item Reproducing kernel
+	\item Positive definite function
+\end{itemize}
+
+\begin{definition}[Positive definite function]
+A symmetric function $h:\mathcal X \times \mathcal X \rightarrow \mathbb R$ is positive definite if $\forall n \ge 1,\forall (a_1, a_2, \dots, a_n)\in \mathbb R^n$, $\forall (x_1, \dots, x_n)\in \mathcal X^n$,
+\begin{equation}
+	\sum_{i=1}^n \sum_{j=1}^n a_i a_j h(x_i, x_j)\ge 0.
+\end{equation}
+	
+\end{definition}
+
+
+\end{frame}
+
+%\begin{frame}{More materials about RKHS}
+%Links to additional materials about Hilbert space, kernel, RKHS and etc.
+%\begin{itemize}
+%	\item \href{https://www.gatsby.ucl.ac.uk/~gretton/coursefiles/RKHS_Notes1.pdf}{What is an RKHS}
+%\end{itemize}
+%%\begin{itemize}
+%%	\item \text{https://www.gatsby.ucl.ac.uk/~gretton/coursefiles/RKHS_Notes1.pdf
+%%	\item a
+%%\end{itemize}
+%\end{frame}
+
+
+\begin{frame}{Cross-Covariance Operator}
+\begin{definition}[Cross-covariance operator]
+Suppose we have a random variable $(X, Y)$ on $\mathcal X\times \mathcal Y$, and RKHSs $\mathcal H_{\mathcal X}$ and $\mathcal H_{\mathcal Y}$ on $\mathcal X, \mathcal Y$, respectively, with reproducing kernels $k_{\mathcal X}$ and $k_{\mathcal Y}$, assuming $E\left[k_{\mathcal{X}}(X, X)\right]<\infty, E\left[k_{\mathcal{Y}}(Y, Y)\right]<\infty$, the cross-covariance operator $\Sigma_{YX}:\mathcal H_{\mathcal X} \rightarrow \mathcal H_{\mathcal Y}$ is defined by the unique bounded operator that satisfies
+\begin{equation}
+	\left\langle g, \Sigma_{Y X} f\right\rangle_{\mathcal{H} Y}=\operatorname{Cov}[f(X), g(Y)] \quad(=E[f(X) g(Y)]-E[f(X)] E[g(Y)])
+\end{equation}
+\end{definition}
+
+\end{frame}
+
+
+\begin{frame}{Hilbert-Schmidt}
+\begin{definition}[Hilbert-Schmidt Norm]
+Denote by $C:\mathcal F\rightarrow \mathcal G$ a linear operator. Then provided the sum converges, the Hilbert-Schmidt (HS) norm of  C is defined as 
+\begin{equation}
+	\|C\|_{HS}\defeq\sum_{i,j}\langle Cu_i, v_j\rangle^2_{\mathcal G}
+\end{equation}
+\end{definition}
+
+\begin{definition}[Hilbert-Schmidt Operator]
+A linear operator $C:\mathcal F\rightarrow \mathcal G$ is called a Hilbert-Schmidt operator if its HS norm exists.
+\end{definition}
+
+
+\end{frame}
+
+
+\begin{frame}{HSIC(Hilbert-Schmidt Independence Criterion)\footfullcite{hsic}}
+	\begin{definition}[HSIC]
+	Given random variable $(X, Y)$ on $\mathcal X\times \mathcal Y$, and RKHSs $\mathcal H_{\mathcal X}$ and $\mathcal H_{\mathcal Y}$ on $\mathcal X, \mathcal Y$,
+	HSIC is defined as the squared HS-norm of cross-covariance operator $\Sigma_{YX}$:
+	\begin{equation}
+		HSIC(p_{xy}, \mathcal{H_{\mathcal X}}, \mathcal{H_{\mathcal Y}}) \defeq \|\Sigma_{YX} \|_{HS}^2.
+	\end{equation}
+	\end{definition}
+	
+\begin{definition}[Empirical HSIC]
+Let $Z\defeq \{(x_1, y_1),\dots,(x_m,y_m)\}\subset \mathcal X\times \mathcal Y$ be a series of $m$ independent drawn from $p_{xy}$. 
+An estimator of HSIC is given by 
+\begin{equation}
+	HSIC(Z, \mathcal H_{\mathcal X}, \mathcal H_{\mathcal Y}) \defeq (m-1)^{-2}\operatorname{tr} KHLH,
+\end{equation}
+where $H, K, L\in \mathbb R^{m\times m}, K_{ij}=k(x_i,x_j), L_{ij}=l(y_i, y_j)$ and $H_{ij}=\delta_{ij}-m^{-1}$
+\end{definition}
+
+
+
+\end{frame}
+
+\begin{frame}{Approximation of Empirical HSIC}
+	
+	
+\begin{theorem}[$O(m^{-1})$ Bias of Estimator]
+\begin{equation}
+	\operatorname{HSIC}\left(p_{x y}, \mathcal{H_{\mathcal X}}, \mathcal{H_{\mathcal Y}}\right)=\mathbf{E}_{Z}[\operatorname{HSIC}(Z, \mathcal{H_{\mathcal X}}, \mathcal{H_{\mathcal Y}})]+O\left(m^{-1}\right)
+\end{equation}
+\end{theorem}
+\end{frame}
+

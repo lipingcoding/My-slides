@@ -22,13 +22,14 @@
 \setbeamercolor*{item}{fg=myNewColorA}
 \setbeamercolor*{caption name}{fg=myNewColorA}
 \usefonttheme{professionalfonts}
-\usepackage{natbib}
+\usepackage{biblatex}
 \usepackage{hyperref}
+\bibliography{bib}
 %------------------------------------------------------------
 \titlegraphic{
-\includegraphics[height=1.cm]{ia_icon.pdf}
+\includegraphics[height=1.cm]{template_assets/ia_icon.pdf}
 \hspace{0.5cm}
-\includegraphics[height=1.cm]{cripac_icon.pdf}
+\includegraphics[height=1.cm]{template_assets/cripac_icon.pdf}
 }
 
 \setbeamerfont{title}{size=\large}
@@ -36,13 +37,13 @@
 \setbeamerfont{author}{size=\small}
 \setbeamerfont{date}{size=\small}
 \setbeamerfont{institute}{size=\small}
-\title[CRIPAC]{Stable Learning}
-\subtitle{Foundations and Applations}
+\title[CRIPAC, CASIA, UCAS]{Stable Learning}
+\subtitle{Foundations and Applications}
 \author[Liping Wang]{Liping Wang}
 
-\institute[wangliping2019@ia.ac.cn]{UCAS, CRIPAC}
-\date[Institute of Autation 2022.4]
-{Madrid 2021.4}
+\institute[wangliping2019@ia.ac.cn]{CRIPAC, CASIA, UCAS}
+\date[Institute of Automation 2022.4]
+{Institute of Automation 2022.4}
 
 %------------------------------------------------------------
 %This block of commands puts the table of contents at the 
@@ -75,38 +76,12 @@
 \tableofcontents
 \end{frame}
 %------------------------------------------------------------
-%\section{Introduction}
-%    \begin{frame}{Introduction}
-%    \end{frame}
+
 \section{Background Knowledge}
+\input{background_knowledge}
 
-\begin{frame}{Hilbert Space \& Kernel}
-\begin{definition}[Hilbert Space]
-	A Hilbert space is a real or complex \textbf{inner product space} that is also a \textbf{complete} metric space with respect to the distance function induced by the inner product.
-\end{definition}
-
-Motivation: to generalize methods of linear algebra and calculus from the finite-dimensional Euclidean spaces to infinite-dimensional spaces.
-
-\begin{definition}[Kernel]
-Let $\chi$ be a non-empty set. 
-A function $k: \chi \times \chi\rightarrow \mathbb{R}$ is called a kernel if there exists an $\mathbb R$-Hilbert space and a map $\phi:\chi \rightarrow \mathcal H$ such that $\forall x_1, x_2\in chi$, 
-\begin{equation}
-	k(x_1, x_2) \defeq \langle\phi(x_1),\phi(x_2)\rangle_{\mathcal H}
-\end{equation}   
-\end{definition}
-Motivation: to map features to an infinite-dimensional space.
-
-\end{frame}
-
-\begin{frame}{RKHS(Reproducing Kernel Hilbert Spaces)}
-
-
-
-
-\end{frame}
-
-
-
+\section{Applications of HSIC}
+\input{papers}
 
 \section{Conclusion}
     \begin{frame}{Conclusion}
